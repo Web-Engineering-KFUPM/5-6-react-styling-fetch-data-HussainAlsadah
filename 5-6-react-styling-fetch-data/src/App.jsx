@@ -245,11 +245,14 @@ export default function App() {
      Dependency array MUST be: [searchTerm, users]
      ========================================================= */
   useEffect(() => {
-  if (searchTerm === "") {
+  if (!searchTerm) {
+    // If searchTerm is empty
     setFilteredUsers(users);
   } else {
     const filtered = users.filter((user) =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase())
+      user.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
     );
 
     setFilteredUsers(filtered);
